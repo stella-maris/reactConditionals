@@ -4,21 +4,12 @@ import LoginView from './components/LoginView';
 import UserView from './components/UserView';
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isLoggedIn: false
-    };
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  handleSubmit(e){
-    e.preventDefault();
-    const name = this.input.value;
-    console.log('Login:', name);
-    this.setState({isLoggedIn: true});
-  }
-
+    constructor (props){
+        super(props);
+        this.state = {
+            isLoggedIn: true
+        };
+    }
   render() {
       const isLoggedIn = this.state.isLoggedIn;
       let view;
@@ -28,7 +19,7 @@ class App extends Component {
         );
       } else{
           view = (
-              <LoginView onSubmit={this.handleSubmit}/>
+              <LoginView isLoggedIn={this.state.isLoggedIn} onSubmit={this.state.handleSubmit}/>
           );
       }
     return (
